@@ -1,9 +1,9 @@
-package org.project.bagusna.letsponder.contrrollers;
+package org.project.bagusna.letsponder.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class MainController {
+public class HomeController {
     @FXML
     private Label welcomeText;
 
