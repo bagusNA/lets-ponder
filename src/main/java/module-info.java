@@ -4,6 +4,7 @@ module org.project.bagusna.letsponder {
     requires javafx.fxml;
     requires atlantafx.base;
     requires com.google.gson;
+    requires org.apache.httpcomponents.httpclient;
 
 
     opens org.project.bagusna.letsponder to javafx.fxml;
