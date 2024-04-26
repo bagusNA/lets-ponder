@@ -1,5 +1,7 @@
 package org.project.bagusna.letsponder.services.pocketbase;
 
+import org.apache.http.client.utils.URIBuilder;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -64,14 +66,44 @@ public class PocketbaseRequest {
         return client.send(req, HttpResponse.BodyHandlers.ofString());
     }
 
-    public String getUrl() {
-        String url = this.baseUrl + "/api/collections/" + this.collectionName + "/records";
+    public String getUrl() throws URISyntaxException {
+        String url = String.format("%s/api/collections/%s/records", this.baseUrl, this.collectionName);
 
         if (this.id != null) {
             url += "/" + this.id;
         }
 
-        return url;
+        URIBuilder builder = new URIBuilder(url);
+
+        if (this.page != null) {
+            builder.addParameter("page", this.page.toString());
+        }
+
+        if (this.perPage != null) {
+            builder.addParameter("perPage", this.perPage.toString());
+        }
+
+        if (this.filter != null) {
+            builder.addParameter("filter", this.filter);
+        }
+
+        if (this.sort != null) {
+            builder.addParameter("sort", String.join(",", this.sort));
+        }
+
+        if (this.expand != null) {
+            builder.addParameter("expand", String.join(",", this.expand));
+        }
+
+        if (this.fields != null) {
+            builder.addParameter("fields", String.join(",", this.fields));
+        }
+
+        if (this.skipTotal) {
+            builder.addParameter("skipTotal", "true");
+        }
+
+        return builder.build().toString();
     }
 
     public String getBaseUrl() {
