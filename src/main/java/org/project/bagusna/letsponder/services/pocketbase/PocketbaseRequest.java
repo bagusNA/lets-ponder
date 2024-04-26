@@ -49,7 +49,7 @@ public class PocketbaseRequest {
         }
     }
 
-    public void send() throws URISyntaxException, IOException, InterruptedException {
+    public HttpResponse<String> send() throws URISyntaxException, IOException, InterruptedException {
         URI uri = new URI(this.getUrl());
 
         System.out.println(uri.getRawPath());
@@ -60,8 +60,8 @@ public class PocketbaseRequest {
                 .build();
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
-        System.out.println(res.body());
+
+        return client.send(req, HttpResponse.BodyHandlers.ofString());
     }
 
     public String getUrl() {
