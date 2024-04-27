@@ -41,4 +41,4 @@ A step by step guide that will tell you how to get the development environment u
 ## Special Thanks
 
 * You
-Update 1: edit readme file
+* 
