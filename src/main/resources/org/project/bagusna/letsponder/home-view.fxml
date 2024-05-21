@@ -19,10 +19,13 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="10.0" top="20.0" />
+                        <Insets left="20.0" top="20.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@../../../Image/Lp.png" />
+                     </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0">
+                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" style="-fx-background-color: #10439F;">
                      <graphic>
                         <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,7 +45,7 @@
                         <Insets left="25.0" top="2.0" />
                      </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0">
+                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" style="-fx-background-color: #10439F;">
                      <graphic>
                         <ImageView fitHeight="37.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                            <image>
