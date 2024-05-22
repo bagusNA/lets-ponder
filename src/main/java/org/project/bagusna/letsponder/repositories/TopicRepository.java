@@ -7,5 +7,4 @@ public class TopicRepository extends BaseRepository<Topic> {
     public TopicRepository(PocketbaseService pbService) {
         super(pbService, Topic.collectionName, Topic.class);
     }
-    
 }

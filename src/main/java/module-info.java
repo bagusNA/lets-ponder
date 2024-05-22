@@ -10,6 +10,7 @@ module org.project.bagusna.letsponder {
     opens org.project.bagusna.letsponder to javafx.fxml;
     exports org.project.bagusna.letsponder;
     exports org.project.bagusna.letsponder.controllers;
+    exports org.project.bagusna.letsponder.views;
     opens org.project.bagusna.letsponder.controllers to javafx.fxml;
     opens org.project.bagusna.letsponder.models to com.google.gson;
 }
