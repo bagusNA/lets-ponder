@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -19,9 +18,9 @@
          <font>
             <Font name="Verdana" size="12.0" />
          </font></TextField>
-      <Button layoutX="32.0" layoutY="29.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 70;">
+      <Button fx:id="Button_back" layoutX="32.0" layoutY="29.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 70; -fx-background-color: #ffffff;">
          <graphic>
-            <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+            <FontIcon iconLiteral="fas-arrow-left" iconSize="15" />
          </graphic>
       </Button>
       <ScrollPane layoutY="112.0" prefHeight="310.0" prefWidth="640.0" style="-fx-border-color: #FFFFFF;">
@@ -39,7 +38,10 @@
                                        <children>
                                           <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                              <children>
-                                                <FontIcon iconLiteral="far-heart" iconSize="12" />
+                                                <FontIcon iconColor="RED" iconLiteral="far-heart" iconSize="12">
+                                                   <HBox.margin>
+                                                      <Insets top="6.0" />
+                                                   </HBox.margin></FontIcon>
                                                 <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
                                                    <HBox.margin>
                                                       <Insets top="3.0" />
@@ -49,6 +51,11 @@
                                           </HBox>
                                           <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                              <children>
+                                                <FontIcon iconLiteral="fas-comment" iconSize="12">
+                                                   <HBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </HBox.margin>
+                                                </FontIcon>
                                                 
                                                 <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
                                              </children>
@@ -293,11 +300,9 @@
                   </Label>
                </children>
             </VBox>
-            <Button layoutX="459.0" layoutY="9.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="33.0" style="-fx-border-radius: 70; -fx-background-radius: 70; -fx-background-color: #;" />
-            <FontAwesomeIconView glyphName="PLUS" layoutX="470.0" layoutY="28.0" size="15" />
-            <FontIcon />
+            <Button fx:id="Button_buatpertanyaan" layoutX="459.0" layoutY="9.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="33.0" style="-fx-border-radius: 80; -fx-background-radius: 80; -fx-background-color: #000000;" />
+            <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-plus" iconSize="15" layoutX="469.0" layoutY="30.0" />
          </children>
       </Pane>
-      <FontIcon iconLiteral="fab-fedora" layoutX="-149.0" layoutY="303.0" />
    </children>
 </AnchorPane>
