@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.LoginController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
@@ -42,7 +42,7 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Text>
-                        <TextField styleClass="search-box" stylesheets="@../../../../../../values/style.css">
+                        <TextField fx:id="usernameField" styleClass="search-box" stylesheets="@../../../../../../values/style.css">
                            <VBox.margin>
                               <Insets top="2.0" />
                            </VBox.margin>
@@ -52,12 +52,12 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Text>
-                        <TextField styleClass="search-box" stylesheets="@../../../../../../values/style.css">
+                        <TextField fx:id="passwordField" styleClass="search-box" stylesheets="@../../../../../../values/style.css">
                            <VBox.margin>
                               <Insets top="1.0" />
                            </VBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefWidth="150.0" styleClass="search-button" stylesheets="@../../../../../../values/style.css" text="Login" textFill="WHITE">
+                        <Button fx:id="loginButton" mnemonicParsing="false" prefWidth="150.0" styleClass="search-button" stylesheets="@../../../../../../values/style.css" text="Login" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="25.0" top="50.0" />
                            </VBox.margin>
@@ -70,7 +70,7 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Text>
-                        <Button mnemonicParsing="false" prefWidth="150.0" styleClass="search-button" stylesheets="@../../../../../../values/style.css" text="Register" textFill="WHITE">
+                        <Button fx:id="registerButton" mnemonicParsing="false" prefWidth="150.0" styleClass="search-button" stylesheets="@../../../../../../values/style.css" text="Register" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="25.0" top="10.0" />
                            </VBox.margin>
