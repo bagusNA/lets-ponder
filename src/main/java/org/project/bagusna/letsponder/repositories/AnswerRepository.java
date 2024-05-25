@@ -10,8 +10,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 
 public class AnswerRepository extends BaseRepository<Answer> {
-    public AnswerRepository(PocketbaseService pbService) {
-        super(pbService, Answer.collectionName, Answer.class);
+    public AnswerRepository() {
+        super(Answer.collectionName, Answer.class);
     }
 
     public Pagination<Answer> getByQuestionId(String questionId) throws URISyntaxException, IOException, InterruptedException {
