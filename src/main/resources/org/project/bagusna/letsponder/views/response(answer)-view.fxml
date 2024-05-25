@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.views.AnswerdetailView">
+   <children>
+      <Pane fx:id="panepertanyaan_diAnswer" layoutY="42.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #E8E2E2;">
+         <children>
+            <TextFlow fx:id="textflow_pertanyaan" layoutX="25.0" prefHeight="50.0" prefWidth="582.0">
+               <children>
+                  <Text fx:id="teks_didalam_textflow" strokeType="OUTSIDE" strokeWidth="0.0" text="bagaimana cara menyelesaikan tugas?">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextFlow>
+         </children>
+      </Pane>
+      <TextArea fx:id="textarea_jawaban" layoutY="90.0" prefHeight="340.0" prefWidth="640.0" text="&#10;&#10;" />
+      <Button fx:id="tombol_kirim" layoutX="300.0" layoutY="436.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="39.0" style="-fx-border-radius: 100; -fx-background-radius: 100; -fx-background-color: #000000;">
+         <graphic>
+            <FontIcon fx:id="ikon_kirim" fill="WHITE" iconColor="WHITE" iconLiteral="far-paper-plane" iconSize="15" />
+         </graphic>
+      </Button>
+      <Button fx:id="tombol_kembali" layoutX="12.0" layoutY="7.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="39.0" style="-fx-background-radius: 70; -fx-border-radius: 70; -fx-background-color: #FFFFFF;">
+         <graphic>
+            <FontIcon fx:id="ikon_kembali" iconLiteral="fas-arrow-left" iconSize="15" />
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
