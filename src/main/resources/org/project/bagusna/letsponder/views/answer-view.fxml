@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane prefHeight="480.0" prefWidth="91.0" style="-fx-background-color: #10439F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.263256414560601E-14" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox prefHeight="480.0" prefWidth="91.0" style="-fx-background-color: #10439F;">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                            <VBox.margin>
+                                <Insets left="20.0" top="20.0" />
+                            </VBox.margin>
+                            <image>
+                                <Image url="@../img/Lp.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" style="-fx-background-color: #10439F;">
+                            <graphic>
+                                <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/Home.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <VBox.margin>
+                                <Insets left="18.0" top="80.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Label text="Home" textFill="WHITE">
+                            <font>
+                                <Font name="Verdana Bold" size="13.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="25.0" top="2.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="56.0" style="-fx-background-color: #10439F;">
+                            <graphic>
+                                <ImageView fitHeight="37.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/answer.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <VBox.margin>
+                                <Insets left="18.0" top="50.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Label text="Answer" textFill="WHITE">
+                            <font>
+                                <Font name="Verdana Bold" size="13.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="18.0" top="2.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+      <Label layoutX="138.0" layoutY="30.0" text="Answer the question">
+         <font>
+            <Font name="Verdana Bold" size="17.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="92.0" layoutY="62.0" prefHeight="418.0" prefWidth="548.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="546.0">
+               <children>
+                  <VBox layoutX="-1.0" layoutY="-2.0" prefHeight="600.0" prefWidth="534.0">
+                     <children>
+                        <Pane prefHeight="126.0" prefWidth="525.0" style="-fx-border-color: #B5C0D0; -fx-border-radius: 5;">
+                           <children>
+                              <VBox layoutX="1.0" prefHeight="126.0" prefWidth="523.0">
+                                 <children>
+                                    <TextFlow fx:id="textflow_answer" prefHeight="106.0" prefWidth="523.0" />
+                                    <Button fx:id="tombolanswer_luar" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 20; -fx-background-radius: 20;" text="answer">
+                                       <VBox.margin>
+                                          <Insets bottom="7.0" left="450.0" top="5.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Verdana" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+    </children>
+</AnchorPane>
