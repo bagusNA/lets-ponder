@@ -33,13 +33,6 @@ public class LoginController {
         registerButton.setOnAction(this::handleRegister);
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
     private void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -53,5 +46,12 @@ public class LoginController {
 
     private void handleRegister(ActionEvent event) {
         showAlert("Register", "belum buat");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
