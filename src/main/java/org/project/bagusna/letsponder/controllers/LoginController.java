@@ -5,8 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import org.project.bagusna.letsponder.LetsPonderApplication;
 import org.project.bagusna.letsponder.Router;
 import org.project.bagusna.letsponder.services.auth.AuthService;
+
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class LoginController {
     private final AuthService authService;
@@ -23,12 +29,17 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
+    @FXML
+    private Pane coverImageContainer;
+
     public LoginController(AuthService authService) {
         this.authService = authService;
     }
 
     @FXML
     public void initialize() {
+        this.loadCoverImage();
+
         loginButton.setOnAction(this::handleLogin);
         registerButton.setOnAction(this::handleRegister);
     }
@@ -53,5 +64,26 @@ public class LoginController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void loadCoverImage() {
+        URL imgResource = LetsPonderApplication.class.getResource("img/login-cover.jpg");
+
+        try {
+            Image image = new Image(imgResource.toURI().toString());
+
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    image,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(1, 1, true, true, true, true)
+            );
+            Background background = new Background(backgroundImage);
+            this.coverImageContainer.setBackground(background);
+        }
+        catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
