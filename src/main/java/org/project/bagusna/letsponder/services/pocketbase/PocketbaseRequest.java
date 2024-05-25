@@ -53,7 +53,7 @@ public class PocketbaseRequest {
         }
     }
 
-    public HttpResponse<String> send() throws URISyntaxException, IOException, InterruptedException {
+    public HttpResponse<String> get() throws URISyntaxException, IOException, InterruptedException {
         URI uri = new URI(this.getUrl());
 
         HttpRequest req = HttpRequest.newBuilder()

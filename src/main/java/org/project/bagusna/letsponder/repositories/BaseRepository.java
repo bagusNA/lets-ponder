@@ -47,14 +47,14 @@ public abstract class BaseRepository<T extends BaseModel> {
 
     public Pagination<T> getAll() throws URISyntaxException, IOException, InterruptedException {
         PocketbaseRequest req = this.getRequest().build();
-        HttpResponse<String> res = req.send();
+        HttpResponse<String> res = req.get();
 
         return this.parsePagination(res.body());
     }
 
     public T getDetail(String id) throws URISyntaxException, IOException, InterruptedException {
         PocketbaseRequest req = this.getRequest().id(id).build();
-        HttpResponse<String> res = req.send();
+        HttpResponse<String> res = req.get();
 
         return this.parseDetail(res.body());
     }
