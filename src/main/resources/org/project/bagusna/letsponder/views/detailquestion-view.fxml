@@ -43,7 +43,7 @@
                                 </Button>
                             </children>
                         </Pane>
-                        <Pane fx:id="responsepage" layoutX="14.0" layoutY="128.0" prefHeight="190.0" prefWidth="610.0" style="-fx-border-color: #B5C0D0; -fx-border-radius: 10;">
+                        <Pane fx:id="pageresponse" layoutX="14.0" layoutY="128.0" prefHeight="190.0" prefWidth="610.0" style="-fx-border-color: #B5C0D0; -fx-border-radius: 10;">
                             <children>
                                 <VBox prefHeight="190.0" prefWidth="610.0">
                                     <children>
