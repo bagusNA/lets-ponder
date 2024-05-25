@@ -6,6 +6,10 @@ module org.project.bagusna.letsponder {
     requires com.google.gson;
     requires io.github.cdimascio.dotenv.java;
     requires org.apache.httpcomponents.httpclient;
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+    // add icon pack modules
+    requires org.kordamp.ikonli.fontawesome5;
 
 
     opens org.project.bagusna.letsponder to javafx.fxml;
