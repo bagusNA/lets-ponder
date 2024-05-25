@@ -3,7 +3,6 @@ package org.project.bagusna.letsponder;
 import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import org.project.bagusna.letsponder.controllers.LoginController;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
 import org.project.bagusna.letsponder.repositories.UserRepository;
 import org.project.bagusna.letsponder.views.HomeView;
@@ -19,7 +18,7 @@ public class LetsPonderApplication extends Application {
     public void start(Stage stage) throws IOException {
         Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
 
-        PocketbaseService pocketbaseService = new PocketbaseService("https://localhost:8080");
+        PocketbaseService pocketbaseService = new PocketbaseService();
         UserRepository userRepository = new UserRepository();
 
         View[] views = {

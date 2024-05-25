@@ -18,7 +18,7 @@ public class AnswerRepository extends BaseRepository<Answer> {
         String filter = String.format("question='%s'", questionId);
         PocketbaseRequest req = this.getRequest().filter(filter).build();
 
-        HttpResponse<String> res = req.send();
+        HttpResponse<String> res = req.get();
         return this.parsePagination(res.body());
     }
 }
