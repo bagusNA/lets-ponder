@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.project.bagusna.letsponder.Router;
 import org.project.bagusna.letsponder.services.auth.AuthService;
-import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
 
 public class LoginController {
     private final AuthService authService;
@@ -24,9 +23,8 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
-    public LoginController() {
-        PocketbaseService pocketbaseService = new PocketbaseService();
-        this.authService = new AuthService(pocketbaseService);
+    public LoginController(AuthService authService) {
+        this.authService = authService;
     }
 
     @FXML

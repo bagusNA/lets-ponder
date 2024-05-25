@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.HomeController">
    <children>
       <Pane prefHeight="480.0" prefWidth="91.0" style="-fx-background-color: #10439F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.263256414560601E-14" AnchorPane.topAnchor="0.0">
          <children>
