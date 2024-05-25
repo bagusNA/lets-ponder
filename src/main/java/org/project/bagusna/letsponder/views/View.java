@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.project.bagusna.letsponder.LetsPonderApplication;
+import org.project.bagusna.letsponder.services.Service;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,9 @@ public abstract class View {
     public void open(Stage stage) throws IOException {
         URL layoutResource = LetsPonderApplication.class.getResource(this.getFileName());
         FXMLLoader layout = new FXMLLoader(layoutResource);
+
+        Service.inject(layout);
+
         Scene scene = new Scene(layout.load(), 800, 600);
 
         stage.setTitle(title);

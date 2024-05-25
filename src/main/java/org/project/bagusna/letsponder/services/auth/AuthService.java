@@ -13,8 +13,8 @@ import java.net.http.HttpResponse;
 public class AuthService {
     private final PocketbaseService pocketbaseService;
 
-    public AuthService(PocketbaseService pocketbaseService) {
-        this.pocketbaseService = pocketbaseService;
+    public AuthService() {
+        this.pocketbaseService = new PocketbaseService();
     }
 
     public boolean authenticate(String identity, String password) {

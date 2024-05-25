@@ -4,8 +4,8 @@ import org.project.bagusna.letsponder.models.GradeCategory;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
 
 public class GradeCategoryRepository extends BaseRepository<GradeCategory> {
-    public GradeCategoryRepository(PocketbaseService pbService) {
-        super(pbService, GradeCategory.collectionName, GradeCategory.class);
+    public GradeCategoryRepository() {
+        super(GradeCategory.collectionName, GradeCategory.class);
     }
     
 }

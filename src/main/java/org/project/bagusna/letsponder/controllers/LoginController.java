@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.project.bagusna.letsponder.Router;
 import org.project.bagusna.letsponder.services.auth.AuthService;
-import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
 
 public class LoginController {
     private final AuthService authService;
@@ -24,22 +23,14 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
-    public LoginController() {
-        PocketbaseService pocketbaseService = new PocketbaseService();
-        this.authService = new AuthService(pocketbaseService);
+    public LoginController(AuthService authService) {
+        this.authService = authService;
     }
 
     @FXML
     public void initialize() {
         loginButton.setOnAction(this::handleLogin);
         registerButton.setOnAction(this::handleRegister);
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void handleLogin(ActionEvent event) {
@@ -55,5 +46,12 @@ public class LoginController {
 
     private void handleRegister(ActionEvent event) {
         showAlert("Register", "belum buat");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

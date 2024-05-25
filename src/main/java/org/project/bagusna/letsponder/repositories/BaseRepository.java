@@ -18,8 +18,8 @@ public abstract class BaseRepository<T extends BaseModel> {
     protected final Class<T> type;
     protected final Gson parser;
 
-    public BaseRepository(PocketbaseService pbService, String collectionName, Class<T> type) {
-        this.pbService = pbService;
+    public BaseRepository(String collectionName, Class<T> type) {
+        this.pbService = new PocketbaseService();
         this.collectionName = collectionName;
         this.type = type;
 
