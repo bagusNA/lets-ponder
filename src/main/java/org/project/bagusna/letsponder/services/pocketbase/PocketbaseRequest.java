@@ -22,6 +22,7 @@ public class PocketbaseRequest {
     private String filter;
     private String[] expand;
     private String[] fields;
+    private String slug;
     private boolean skipTotal;
 
     public PocketbaseRequest(String baseUrl, String collectionName) {
@@ -33,6 +34,7 @@ public class PocketbaseRequest {
         this.baseUrl = builder.baseUrl;
         this.collectionName = builder.collectionName;
         this.id = builder.id;
+        this.slug = builder.slug;
         this.page = builder.page;
         this.perPage = builder.perPage;
         this.filter = builder.filter;
@@ -54,8 +56,6 @@ public class PocketbaseRequest {
     public HttpResponse<String> send() throws URISyntaxException, IOException, InterruptedException {
         URI uri = new URI(this.getUrl());
 
-        System.out.println(uri.getRawPath());
-
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
@@ -67,7 +67,15 @@ public class PocketbaseRequest {
     }
 
     public String getUrl() throws URISyntaxException {
-        String url = String.format("%s/api/collections/%s/records", this.baseUrl, this.collectionName);
+        String formatString = "%s/api/collections/%s";
+
+        if (this.slug != null) {
+            formatString += "/" + this.slug;
+        } else {
+            formatString += "/records";
+        }
+
+        String url = String.format(formatString, this.baseUrl, this.collectionName);
 
         if (this.id != null) {
             url += "/" + this.id;
@@ -187,6 +195,7 @@ public class PocketbaseRequest {
         private String baseUrl;
         private String collectionName;
         private String id;
+        private String slug;
 
         private Integer page;
         private Integer perPage;
@@ -208,6 +217,11 @@ public class PocketbaseRequest {
 
         public Builder id(String id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder slug(String slug) {
+            this.slug = slug;
             return this;
         }
 
