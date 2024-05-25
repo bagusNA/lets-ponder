@@ -5,304 +5,63 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="12.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.SearchController">
    <children>
-      <TextField layoutX="139.0" layoutY="86.0" prefHeight="26.0" prefWidth="362.0" promptText="search" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-radius: 20;">
+      <Label text="Search">
          <font>
-            <Font name="Verdana" size="12.0" />
-         </font></TextField>
-      <Button fx:id="Button_back" layoutX="32.0" layoutY="29.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="34.0" style="-fx-background-radius: 70; -fx-background-color: #ffffff;">
-         <graphic>
-            <FontIcon iconLiteral="fas-arrow-left" iconSize="15" />
-         </graphic>
-      </Button>
-      <ScrollPane layoutY="112.0" prefHeight="310.0" prefWidth="640.0" style="-fx-border-color: #FFFFFF;">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="529.0" prefWidth="642.0" style="-fx-border-color: #FFFFFF;">
-               <children>
-                  <VBox prefHeight="504.0" prefWidth="622.0">
-                     <children>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <FontIcon iconColor="RED" iconLiteral="far-heart" iconSize="12">
-                                                   <HBox.margin>
-                                                      <Insets top="6.0" />
-                                                   </HBox.margin></FontIcon>
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                <FontIcon iconLiteral="fas-comment" iconSize="12">
-                                                   <HBox.margin>
-                                                      <Insets top="5.0" />
-                                                   </HBox.margin>
-                                                </FontIcon>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Sebutkan lagu daerah" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Pane minHeight="50.0" prefHeight="70.0" prefWidth="640.0">
-                           <children>
-                              <HBox prefHeight="52.0" prefWidth="585.0">
-                                 <children>
-                                    <Label prefHeight="52.0" prefWidth="542.0" text="Apakah ayam bertelur" />
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="20" HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                             <children>
-                                                
-                                                <Label prefHeight="26.0" prefWidth="71.0" text="5" HBox.hgrow="ALWAYS" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                     </children>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <Pane layoutX="-4.0" layoutY="434.0" prefHeight="47.0" prefWidth="647.0" style="-fx-background-color: #91C8E4; -fx-background-radius: 15;">
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <HBox spacing="24.0">
          <children>
-            <VBox layoutX="124.0" layoutY="-1.0" prefHeight="47.0" prefWidth="292.0">
+            <Button mnemonicParsing="false" onAction="#onBackButtonAction">
+               <graphic>
+                  <FontIcon iconLiteral="fas-chevron-left" />
+               </graphic>
+            </Button>
+            <TextField fx:id="searchInput" onAction="#searchAction" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#searchAction" text="Search" />
+         </children>
+      </HBox>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="listContainer" prefHeight="200.0" prefWidth="100.0">
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="24.0">
+         <children>
+            <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="If you don't find the question you're looking for" textFill="#4b4848">
+                  <Label text="If you don't find the question you're looking for" />
+                  <Label text="Ask a Question">
                      <font>
-                        <Font name="Verdana" size="12.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Ask a question">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="2.0" />
-                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="Button_buatpertanyaan" layoutX="459.0" layoutY="9.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="33.0" style="-fx-border-radius: 80; -fx-background-radius: 80; -fx-background-color: #000000;" />
-            <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-plus" iconSize="15" layoutX="469.0" layoutY="30.0" />
+            <Button mnemonicParsing="false" style="-fx-border-radius: 80; -fx-background-radius: 80;" text="Ask">
+               <graphic>
+                  <FontIcon iconLiteral="fas-question" />
+               </graphic>
+               <padding>
+                  <Insets bottom="12.0" left="24.0" right="24.0" top="12.0" />
+               </padding>
+            </Button>
          </children>
-      </Pane>
+      </HBox>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets left="24.0" right="24.0" top="24.0" />
+   </padding>
+</VBox>
