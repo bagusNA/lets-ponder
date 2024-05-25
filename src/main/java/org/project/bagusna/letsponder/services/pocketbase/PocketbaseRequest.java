@@ -1,6 +1,7 @@
 package org.project.bagusna.letsponder.services.pocketbase;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.project.bagusna.letsponder.dto.formrequests.FormRequest;
 
 import java.io.IOException;
 import java.net.URI;
@@ -59,6 +60,21 @@ public class PocketbaseRequest {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
+                .build();
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        return client.send(req, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public HttpResponse<String> post(FormRequest form) throws URISyntaxException, IOException, InterruptedException {
+        URI uri = new URI(this.getUrl());
+
+        HttpRequest.BodyPublisher body = HttpRequest.BodyPublishers.ofString(form.toJson());
+        HttpRequest req = HttpRequest.newBuilder()
+                .uri(uri)
+                .header("Content-Type", "application/json")
+                .POST(body)
                 .build();
 
         HttpClient client = HttpClient.newHttpClient();
