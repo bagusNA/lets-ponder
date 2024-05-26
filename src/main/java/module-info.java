@@ -10,6 +10,7 @@ module org.project.bagusna.letsponder {
     requires org.kordamp.ikonli.javafx;
     // add icon pack modules
     requires org.kordamp.ikonli.fontawesome5;
+    requires javafx.graphics;
 
 
     opens org.project.bagusna.letsponder to javafx.fxml;
@@ -17,7 +18,8 @@ module org.project.bagusna.letsponder {
     exports org.project.bagusna.letsponder.models;
     exports org.project.bagusna.letsponder.controllers;
     exports org.project.bagusna.letsponder.dto.formrequests;
-    exports org.project.bagusna.letsponder.dto.responses;
+    // exports org.project.bagusna.letsponder.dto.responses;
+    exports org.project.bagusna.letsponder.services.auth;
     exports org.project.bagusna.letsponder.views;
     exports org.project.bagusna.letsponder.services.pocketbase;
     exports org.project.bagusna.letsponder.repositories;
