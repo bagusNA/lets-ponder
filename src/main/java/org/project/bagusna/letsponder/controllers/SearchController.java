@@ -51,6 +51,8 @@ public class SearchController extends Controller {
     private void searchAction() {
         String query = this.searchInput.getText();
 
+        this.clearList();
+
         this.thread.execute(() -> {
             Platform.runLater(() -> {
                 FadeTransition opacityTransition = new FadeTransition(Duration.millis(500), loadingBar);
@@ -126,5 +128,9 @@ public class SearchController extends Controller {
         rootContainer.setOnMouseClicked(e -> this.onListItemClicked(e, question));
 
         this.listContainer.getChildren().add(rootContainer);
+    }
+
+    private void clearList() {
+        this.listContainer.getChildren().clear();
     }
 }
