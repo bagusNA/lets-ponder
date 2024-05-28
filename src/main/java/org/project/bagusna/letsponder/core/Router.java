@@ -1,4 +1,4 @@
-package org.project.bagusna.letsponder;
+package org.project.bagusna.letsponder.core;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;

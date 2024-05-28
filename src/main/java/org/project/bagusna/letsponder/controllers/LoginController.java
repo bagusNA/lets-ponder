@@ -1,20 +1,24 @@
 package org.project.bagusna.letsponder.controllers;
 
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 import org.project.bagusna.letsponder.LetsPonderApplication;
-import org.project.bagusna.letsponder.Router;
+import org.project.bagusna.letsponder.core.Router;
 import org.project.bagusna.letsponder.services.auth.AuthService;
 
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class LoginController {
+public class LoginController extends Controller {
     private final AuthService authService;
 
     @FXML
@@ -32,7 +36,12 @@ public class LoginController {
     @FXML
     private Pane coverImageContainer;
 
+    @FXML
+    private ProgressBar loadingBar;
+
     public LoginController(AuthService authService) {
+        super();
+
         this.authService = authService;
     }
 
@@ -48,11 +57,34 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (this.authService.authenticate(username, password)) {
-            Router.getInstance().openView("home");
-        } else {
-            showAlert("Login Gagal", "Silahkan periksa kembali username dan/atau password Anda.");
-        }
+        this.thread.execute(() -> {
+            Platform.runLater(() -> {
+                FadeTransition opacityTransition = new FadeTransition(Duration.millis(500), loadingBar);
+                opacityTransition.setFromValue(0);
+                opacityTransition.setToValue(1);
+                opacityTransition.play();
+            });
+
+            if (this.authService.authenticate(username, password)) {
+                Platform.runLater(() -> Router.getInstance().openView("home"));
+            } else {
+                Platform.runLater(() ->
+                    showAlert("Login Gagal", "Silahkan periksa kembali username dan/atau password Anda.")
+                );
+            }
+
+            Platform.runLater(() -> {
+                FadeTransition opacityTransition = new FadeTransition(Duration.millis(500), loadingBar);
+                opacityTransition.setFromValue(1);
+                opacityTransition.setToValue(0);
+                opacityTransition.play();
+
+                usernameField.clear();
+                passwordField.clear();
+
+                usernameField.requestFocus();
+            });
+        });
     }
 
     private void handleRegister(ActionEvent event) {

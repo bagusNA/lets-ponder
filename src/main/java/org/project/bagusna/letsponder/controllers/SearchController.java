@@ -1,5 +1,6 @@
 package org.project.bagusna.letsponder.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -9,7 +10,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.project.bagusna.letsponder.Router;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 
@@ -17,9 +17,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class SearchController {
+public class SearchController extends Controller {
     private final QuestionRepository questionRepository;
-    private final Router router;
     private ArrayList<Question> questions;
 
     @FXML
@@ -28,8 +27,9 @@ public class SearchController {
     private TextField searchInput;
 
     public SearchController(QuestionRepository questionRepository) {
+        super();
+
         this.questionRepository = questionRepository;
-        this.router = Router.getInstance();
     }
 
     @FXML
@@ -46,13 +46,15 @@ public class SearchController {
     private void searchAction() {
         String query = this.searchInput.getText();
 
-        try {
-            this.questions = this.questionRepository.getByTitle(query).getItems();
-        } catch (URISyntaxException | IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        this.thread.execute(() -> {
+            try {
+                this.questions = this.questionRepository.getByTitle(query).getItems();
 
-        this.buildList();
+                Platform.runLater(this::buildList);
+            } catch (URISyntaxException | IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @FXML
