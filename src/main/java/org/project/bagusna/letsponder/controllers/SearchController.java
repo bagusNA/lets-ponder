@@ -1,14 +1,17 @@
 package org.project.bagusna.letsponder.controllers;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
@@ -25,6 +28,8 @@ public class SearchController extends Controller {
     private VBox listContainer;
     @FXML
     private TextField searchInput;
+    @FXML
+    private ProgressBar loadingBar;
 
     public SearchController(QuestionRepository questionRepository) {
         super();
@@ -47,6 +52,13 @@ public class SearchController extends Controller {
         String query = this.searchInput.getText();
 
         this.thread.execute(() -> {
+            Platform.runLater(() -> {
+                FadeTransition opacityTransition = new FadeTransition(Duration.millis(500), loadingBar);
+                opacityTransition.setFromValue(0);
+                opacityTransition.setToValue(1);
+                opacityTransition.play();
+            });
+
             try {
                 this.questions = this.questionRepository.getByTitle(query).getItems();
 
@@ -54,6 +66,13 @@ public class SearchController extends Controller {
             } catch (URISyntaxException | IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
+            Platform.runLater(() -> {
+                FadeTransition opacityTransition = new FadeTransition(Duration.millis(500), loadingBar);
+                opacityTransition.setFromValue(1);
+                opacityTransition.setToValue(0);
+                opacityTransition.play();
+            });
         });
     }
 

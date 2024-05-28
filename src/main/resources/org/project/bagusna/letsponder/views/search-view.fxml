@@ -3,13 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="12.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.SearchController">
    <children>
@@ -27,6 +27,11 @@
             </Button>
             <TextField fx:id="searchInput" onAction="#searchAction" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#searchAction" text="Search" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <ProgressBar fx:id="loadingBar" maxWidth="1.7976931348623157E308" opacity="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
