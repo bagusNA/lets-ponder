@@ -1,5 +1,6 @@
 package org.project.bagusna.letsponder.views.components;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -16,6 +17,7 @@ public class QuestionListBlock extends VBox {
         this.questions = questions;
 
         this.setSpacing(8);
+        VBox.setMargin(this, new Insets(0, 0, 20, 0));
 
         this.getChildren().addAll(
                 this.getTitleLabel(),
@@ -40,10 +42,7 @@ public class QuestionListBlock extends VBox {
         for (Question question: this.questions) {
             QuestionItem item = new QuestionItem(question);
             container.getChildren().add(item);
-            System.out.println(item.getWidth());
         }
-
-        System.out.println(container.getChildren());
 
         return container;
     }
