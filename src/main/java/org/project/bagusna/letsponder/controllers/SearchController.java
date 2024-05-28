@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.project.bagusna.letsponder.Router;
+import org.project.bagusna.letsponder.core.Router;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 

@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import org.project.bagusna.letsponder.LetsPonderApplication;
-import org.project.bagusna.letsponder.Router;
+import org.project.bagusna.letsponder.core.Router;
 import org.project.bagusna.letsponder.services.auth.AuthService;
 
 import java.net.URISyntaxException;
