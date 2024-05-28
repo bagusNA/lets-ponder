@@ -1,5 +1,6 @@
 package org.project.bagusna.letsponder.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -45,13 +46,15 @@ public class SearchController extends Controller {
     private void searchAction() {
         String query = this.searchInput.getText();
 
-        try {
-            this.questions = this.questionRepository.getByTitle(query).getItems();
-        } catch (URISyntaxException | IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        this.thread.execute(() -> {
+            try {
+                this.questions = this.questionRepository.getByTitle(query).getItems();
 
-        this.buildList();
+                Platform.runLater(this::buildList);
+            } catch (URISyntaxException | IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @FXML
