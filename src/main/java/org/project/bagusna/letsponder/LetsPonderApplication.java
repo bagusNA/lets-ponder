@@ -32,7 +32,7 @@ public class LetsPonderApplication extends Application {
 
         Router router = Router.setup(stage, views);
 
-        router.openView("answer");
+        router.openView("login");
     }
 
     public static void main(String[] args) {
