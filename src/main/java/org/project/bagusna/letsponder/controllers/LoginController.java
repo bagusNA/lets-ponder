@@ -14,7 +14,7 @@ import org.project.bagusna.letsponder.services.auth.AuthService;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class LoginController {
+public class LoginController extends Controller {
     private final AuthService authService;
 
     @FXML
@@ -33,6 +33,8 @@ public class LoginController {
     private Pane coverImageContainer;
 
     public LoginController(AuthService authService) {
+        super();
+
         this.authService = authService;
     }
 

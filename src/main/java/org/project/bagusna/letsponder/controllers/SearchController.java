@@ -9,7 +9,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.project.bagusna.letsponder.core.Router;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 
@@ -17,9 +16,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class SearchController {
+public class SearchController extends Controller {
     private final QuestionRepository questionRepository;
-    private final Router router;
     private ArrayList<Question> questions;
 
     @FXML
@@ -28,8 +26,9 @@ public class SearchController {
     private TextField searchInput;
 
     public SearchController(QuestionRepository questionRepository) {
+        super();
+
         this.questionRepository = questionRepository;
-        this.router = Router.getInstance();
     }
 
     @FXML

@@ -4,8 +4,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import org.project.bagusna.letsponder.core.Router;
-import org.project.bagusna.letsponder.core.ThreadPool;
 import org.project.bagusna.letsponder.models.Topic;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.repositories.TopicRepository;
@@ -14,11 +12,8 @@ import org.project.bagusna.letsponder.views.components.QuestionListBlock;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
 
-public class HomeController {
-    private final Router router;
-    private final ExecutorService thread;
+public class HomeController extends Controller {
     private final QuestionRepository questionRepository;
     private final TopicRepository topicRepository;
     private ArrayList<Topic> topics;
@@ -27,11 +22,10 @@ public class HomeController {
     private VBox mainContentContainer;
 
     public HomeController(QuestionRepository questionRepository, TopicRepository topicRepository) {
+        super();
+
         this.questionRepository = questionRepository;
         this.topicRepository = topicRepository;
-
-        this.router = Router.getInstance();
-        this.thread = ThreadPool.getThread();
     }
 
     @FXML
