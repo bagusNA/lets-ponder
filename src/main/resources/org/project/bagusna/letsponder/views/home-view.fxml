@@ -7,12 +7,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.HomeController">
    <children>
@@ -63,13 +61,13 @@
                      </font>
                   </Label>
                   <TextField onMouseClicked="#onSearchInputClicked" promptText="What's on your mind?" style="-fx-background-radius: 20;" />
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
+                     <content>
+                        <VBox fx:id="mainContentContainer" prefHeight="200.0" prefWidth="100.0" />
+                     </content>
                   </ScrollPane>
                </children>
                <padding>

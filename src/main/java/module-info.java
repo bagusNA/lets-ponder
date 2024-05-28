@@ -21,6 +21,7 @@ module org.project.bagusna.letsponder {
     // exports org.project.bagusna.letsponder.dto.responses;
     exports org.project.bagusna.letsponder.services.auth;
     exports org.project.bagusna.letsponder.views;
+    exports org.project.bagusna.letsponder.views.components;
     exports org.project.bagusna.letsponder.services.pocketbase;
     exports org.project.bagusna.letsponder.repositories;
     // exports org.project.bagusna.letsponder.services.Authentication;
