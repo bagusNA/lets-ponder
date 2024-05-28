@@ -1,7 +1,9 @@
 package org.project.bagusna.letsponder.controllers;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.project.bagusna.letsponder.models.Topic;
@@ -20,6 +22,14 @@ public class HomeController extends Controller {
 
     @FXML
     private VBox mainContentContainer;
+    @FXML
+    private Button homeBtn;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private Button discoverBtn;
+    @FXML
+    private Button logoutBtn;
 
     public HomeController(QuestionRepository questionRepository, TopicRepository topicRepository) {
         super();
@@ -30,6 +40,11 @@ public class HomeController extends Controller {
 
     @FXML
     private void initialize() {
+        this.homeBtn.setOnAction((ActionEvent event) -> this.router.openView("home"));
+        this.searchBtn.setOnAction((ActionEvent event) -> this.router.openView("search"));
+//        this.discoverBtn.setOnAction((ActionEvent event) -> this.router.openView("search"));
+        this.logoutBtn.setOnAction((ActionEvent event) -> this.router.openView("login"));
+
         thread.execute(() -> {
             try {
                 topics = topicRepository.getAll().getItems();
