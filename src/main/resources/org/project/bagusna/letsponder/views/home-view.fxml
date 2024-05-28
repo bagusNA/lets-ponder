@@ -9,104 +9,115 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.HomeController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.HomeController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: #10439F;">
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/Lp.png" />
-                     </image>
-                  </ImageView>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="32.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: #10439F;">
                      <children>
-                        <Button fx:id="homeBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-home" />
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="TOP" layoutX="16.0" layoutY="228.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Search" textAlignment="CENTER">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-search" />
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="discoverBtn" alignment="CENTER" contentDisplay="TOP" layoutX="16.0" layoutY="102.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discover" textAlignment="CENTER" textOverrun="CLIP">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-list-alt" />
-                           </graphic>
-                           <font>
-                              <Font size="12.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </Button>
-                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Separator>
-                        <Button fx:id="logoutBtn" alignment="CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" textOverrun="CLIP">
-                           <graphic>
-                              <FontIcon iconLiteral="fas-sign-out-alt" />
-                           </graphic>
-                           <font>
-                              <Font size="12.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </Button>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/Lp.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="32.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="homeBtn" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-home" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="searchBtn" alignment="CENTER" contentDisplay="TOP" layoutX="16.0" layoutY="228.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Search" textAlignment="CENTER">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-search" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="discoverBtn" alignment="CENTER" contentDisplay="TOP" layoutX="16.0" layoutY="102.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Discover" textAlignment="CENTER" textOverrun="CLIP">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-list-alt" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Button>
+                              <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </Separator>
+                              <Button fx:id="logoutBtn" alignment="CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" textOverrun="CLIP">
+                                 <graphic>
+                                    <FontIcon iconLiteral="fas-sign-out-alt" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="52.0" />
+                           </VBox.margin>
+                        </VBox>
                      </children>
-                     <VBox.margin>
-                        <Insets top="52.0" />
-                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                  </VBox>
+                  <VBox minWidth="400.0" prefHeight="200.0" prefWidth="400.0" spacing="12.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Lets Explore!">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <TextField onMouseClicked="#onSearchInputClicked" promptText="What's on your mind?" style="-fx-background-radius: 20;" />
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                           <content>
+                              <VBox fx:id="mainContentContainer" prefHeight="200.0" prefWidth="100.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets left="32.0" right="32.0" top="32.0" />
+                     </padding>
+                  </VBox>
+                  <VBox minWidth="160.0" prefHeight="200.0" prefWidth="160.0">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin>
                   </VBox>
                </children>
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-            </VBox>
-            <VBox minWidth="400.0" prefHeight="200.0" prefWidth="400.0" spacing="12.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Lets Explore!">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <TextField onMouseClicked="#onSearchInputClicked" promptText="What's on your mind?" style="-fx-background-radius: 20;" />
-                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                     <content>
-                        <VBox fx:id="mainContentContainer" prefHeight="200.0" prefWidth="100.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-               <padding>
-                  <Insets left="32.0" right="32.0" top="32.0" />
-               </padding>
-            </VBox>
-            <VBox minWidth="160.0" prefHeight="200.0" prefWidth="160.0">
-               <HBox.margin>
-                  <Insets top="140.0" />
-               </HBox.margin>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
+      <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../img/learn.jpg" />
+         </image>
+      </ImageView>
    </children>
-</VBox>
+</AnchorPane>
