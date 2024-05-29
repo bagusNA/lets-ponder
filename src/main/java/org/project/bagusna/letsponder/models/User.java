@@ -1,16 +1,24 @@
 package org.project.bagusna.letsponder.models;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class User extends BaseModel {
     public static String collectionName = "users";
     private String username;
     private String email;
     private String name;
+    private String role;
+    private String about;
+    private String profileImage;
 
-    public User(String id, String username, String email, String name, String created, String updated) {
+    public User(String id, String username, String email, String name, String role, String about, String profileImage, String created, String updated) {
         super(id, created, updated);
         this.username = username;
         this.email = email;
         this.name = name;
+        this.role = role;
+        this.about = about;
+        this.profileImage = profileImage;
     }
 
     public String getUsername() {
@@ -37,4 +45,39 @@ public class User extends BaseModel {
         this.name = name;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public String getProfileImageUrl() {
+        String baseUrl = Dotenv.load().get("API_ENDPOINT");
+
+        return String.format(
+                "%s/api/files/%s/%s/%s",
+                baseUrl,
+                collectionName,
+                this.id,
+                this.profileImage
+        );
+    }
 }

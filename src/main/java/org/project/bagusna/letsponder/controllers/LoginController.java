@@ -13,13 +13,16 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.project.bagusna.letsponder.LetsPonderApplication;
 import org.project.bagusna.letsponder.core.Router;
+import org.project.bagusna.letsponder.dto.responses.AuthSuccessResponse;
 import org.project.bagusna.letsponder.services.auth.AuthService;
+import org.project.bagusna.letsponder.stores.AuthStore;
 
 import java.net.URISyntaxException;
 import java.net.URL;
 
 public class LoginController extends Controller {
     private final AuthService authService;
+    private final AuthStore authStore;
 
     @FXML
     private TextField usernameField;
@@ -43,6 +46,7 @@ public class LoginController extends Controller {
         super();
 
         this.authService = authService;
+        this.authStore = AuthStore.getInstance();
     }
 
     @FXML
@@ -65,7 +69,11 @@ public class LoginController extends Controller {
                 opacityTransition.play();
             });
 
-            if (this.authService.authenticate(username, password)) {
+            AuthSuccessResponse authData = this.authService.authenticate(username, password);
+
+            if (authData != null) {
+                this.authStore.set(authData.record);
+
                 Platform.runLater(() -> Router.getInstance().openView("home"));
             } else {
                 Platform.runLater(() ->
