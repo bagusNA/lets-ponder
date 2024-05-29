@@ -1,6 +1,6 @@
 package org.project.bagusna.letsponder.services.pocketbase;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import org.project.bagusna.letsponder.core.Env;
 import org.project.bagusna.letsponder.models.User;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ public class PocketbaseService {
     private final String baseUrl;
 
     public PocketbaseService() {
-        Dotenv env = Dotenv.load();
+        Env env = Env.getInstance();
         this.baseUrl = env.get("API_ENDPOINT");
     }
 
