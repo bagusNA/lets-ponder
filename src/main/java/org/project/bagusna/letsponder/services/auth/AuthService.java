@@ -50,8 +50,6 @@ public class AuthService {
         try {
             HttpResponse<String> res = req.post(body);
 
-            System.out.println(res.body());
-
             if (res.statusCode() != HttpURLConnection.HTTP_OK) {
                 return null;
             }
