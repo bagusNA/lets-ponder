@@ -23,6 +23,7 @@ public class LetsPonderApplication extends Application {
                 new SearchView(),
                 new AnswerView(),
                 new QuestionView(),
+                new DiscoverView(),
         };
 
         Router router = Router.setup(stage, views);
