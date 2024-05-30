@@ -215,10 +215,10 @@ public class PocketbaseRequest {
 
         private Integer page;
         private Integer perPage;
-        private ArrayList<String> sort;
+        private ArrayList<String> sort = new ArrayList<>();
         private String filter;
-        private ArrayList<String> expand;
-        private ArrayList<String> fields;
+        private ArrayList<String> expand = new ArrayList<>();
+        private ArrayList<String> fields = new ArrayList<>();
         private boolean skipTotal;
 
         public Builder baseUrl(String baseUrl) {

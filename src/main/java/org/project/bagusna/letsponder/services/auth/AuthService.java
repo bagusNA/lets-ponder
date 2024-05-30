@@ -2,12 +2,14 @@ package org.project.bagusna.letsponder.services.auth;
 
 import com.google.gson.Gson;
 import org.project.bagusna.letsponder.dto.formrequests.AuthLoginFormRequest;
+import org.project.bagusna.letsponder.dto.formrequests.AuthRegisterFormRequest;
 import org.project.bagusna.letsponder.dto.responses.AuthSuccessResponse;
 import org.project.bagusna.letsponder.models.User;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseRequest;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 
@@ -32,6 +34,29 @@ public class AuthService {
             HttpResponse<String> res = req.post(body);
 
             return this.gson.fromJson(res.body(), AuthSuccessResponse.class);
+        }
+        catch (URISyntaxException | IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public User register(String username, String email, String password, String confirmPassword) {
+        PocketbaseRequest req = this.pocketbaseService.getBuilder()
+                .collection(User.collectionName)
+                .build();
+
+        AuthRegisterFormRequest body = new AuthRegisterFormRequest(username, email, password, confirmPassword);
+
+        try {
+            HttpResponse<String> res = req.post(body);
+
+            System.out.println(res.body());
+
+            if (res.statusCode() != HttpURLConnection.HTTP_OK) {
+                return null;
+            }
+
+            return this.gson.fromJson(res.body(), User.class);
         }
         catch (URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);

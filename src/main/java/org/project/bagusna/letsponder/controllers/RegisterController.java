@@ -11,17 +11,14 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.project.bagusna.letsponder.LetsPonderApplication;
-import org.project.bagusna.letsponder.core.Router;
-import org.project.bagusna.letsponder.dto.responses.AuthSuccessResponse;
+import org.project.bagusna.letsponder.models.User;
 import org.project.bagusna.letsponder.services.auth.AuthService;
-import org.project.bagusna.letsponder.stores.AuthStore;
 
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class LoginController extends Controller {
+public class RegisterController extends Controller {
     private final AuthService authService;
-    private final AuthStore authStore;
 
     @FXML
     private TextField usernameField;
@@ -30,10 +27,16 @@ public class LoginController extends Controller {
     private TextField passwordField;
 
     @FXML
-    private Button loginButton;
+    private TextField passwordConfirmField;
+
+    @FXML
+    private TextField emailField;
 
     @FXML
     private Button registerButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private Pane coverImageContainer;
@@ -41,24 +44,25 @@ public class LoginController extends Controller {
     @FXML
     private ProgressBar loadingBar;
 
-    public LoginController(AuthService authService) {
+    public RegisterController(AuthService authService) {
         super();
 
         this.authService = authService;
-        this.authStore = AuthStore.getInstance();
     }
 
     @FXML
     public void initialize() {
         this.loadCoverImage();
 
-        loginButton.setOnAction(this::handleLogin);
-        registerButton.setOnAction(ev -> this.router.openView("register"));
+        registerButton.setOnAction(this::handleRegister);
+        backButton.setOnAction(ev -> this.router.openView("login"));
     }
 
-    private void handleLogin(ActionEvent event) {
+    private void handleRegister(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        String email = emailField.getText();
+        String confirmPassword = passwordConfirmField.getText();
 
         this.thread.execute(() -> {
             Platform.runLater(() -> {
@@ -68,15 +72,13 @@ public class LoginController extends Controller {
                 opacityTransition.play();
             });
 
-            AuthSuccessResponse authData = this.authService.authenticate(username, password);
+            User user = this.authService.register(username, email, password, confirmPassword);
 
-            if (authData != null) {
-                this.authStore.set(authData.record);
-
-                Platform.runLater(() -> Router.getInstance().openView("home"));
+            if (user != null) {
+                Platform.runLater(() -> this.router.openView("login"));
             } else {
                 Platform.runLater(() ->
-                    showAlert("Login Gagal", "Silahkan periksa kembali username dan/atau password Anda.")
+                    this.showAlert("Register Gagal", "Silahkan periksa kembali username dan/atau password Anda.")
                 );
             }
 
@@ -93,7 +95,6 @@ public class LoginController extends Controller {
             });
         });
     }
-
 
     private void loadCoverImage() {
         URL imgResource = LetsPonderApplication.class.getResource("img/login-cover.jpg");

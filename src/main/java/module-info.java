@@ -25,7 +25,6 @@ module org.project.bagusna.letsponder {
     exports org.project.bagusna.letsponder.views.components;
     exports org.project.bagusna.letsponder.services.pocketbase;
     exports org.project.bagusna.letsponder.repositories;
-    // exports org.project.bagusna.letsponder.services.Authentication;
     opens org.project.bagusna.letsponder.controllers to javafx.fxml;
     opens org.project.bagusna.letsponder.models to com.google.gson;
 }
