@@ -57,7 +57,7 @@ public class HomeController extends Controller {
     private void initialize() {
         this.homeBtn.setOnAction((ActionEvent event) -> this.router.openView("home"));
         this.searchBtn.setOnAction((ActionEvent event) -> this.router.openView("search"));
-//        this.discoverBtn.setOnAction((ActionEvent event) -> this.router.openView("search"));
+        this.discoverBtn.setOnAction((ActionEvent event) -> this.router.openView("discover"));
         this.userBtn.setOnAction((ActionEvent event) -> userContextMenu.show(this.userBtn, Side.TOP, 0, 0));
         this.logoutContextItem.setOnAction((ActionEvent event) -> this.router.openView("login"));
 
