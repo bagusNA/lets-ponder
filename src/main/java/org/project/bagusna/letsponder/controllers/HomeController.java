@@ -11,12 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import org.project.bagusna.letsponder.models.Topic;
-import org.project.bagusna.letsponder.models.User;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.repositories.TopicRepository;
 import org.project.bagusna.letsponder.stores.AuthStore;
+import org.project.bagusna.letsponder.utils.ImageUtil;
 import org.project.bagusna.letsponder.views.components.QuestionListBlock;
 
 import java.io.IOException;
@@ -101,13 +100,8 @@ public class HomeController extends Controller {
     }
 
     public void buildAvatarImage(String src) {
-        double width = this.userAvatarImageView.getFitWidth();
-        double height = this.userAvatarImageView.getFitHeight();
-
-        Circle circle = new Circle(width / 2, height / 2, Math.min(width, height) / 2);
-        this.userAvatarImageView.setClip(circle);
-
         Image avatar = new Image(src);
+        ImageUtil.circleImageView(this.userAvatarImageView, this.userAvatarImageView.getFitWidth());
         this.userAvatarImageView.setImage(avatar);
     }
 }

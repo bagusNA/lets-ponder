@@ -1,11 +1,11 @@
 package org.project.bagusna.letsponder.models;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Question extends BaseModel {
     public static String collectionName = "questions";
     private String title;
-    private String content;
     private String user;
     private String detail;
     private boolean isClosed;
@@ -15,11 +15,16 @@ public class Question extends BaseModel {
     //private List<Image> attachments; 
     
 
-    public Question(String id, String created, String updated, String title, String content,
-    String user, boolean isClosed, String closedAt, String detail) {
+    public Question(String id,
+                    String created,
+                    String updated,
+                    String title,
+                    String user,
+                    boolean isClosed,
+                    String closedAt,
+                    String detail) {
         super(id, created, updated);
         this.title = title;
-        this.content = content;
         this.user = user;
         this.detail = detail;
         this.isClosed = isClosed;
@@ -35,14 +40,6 @@ public class Question extends BaseModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getUser() {
@@ -84,8 +81,4 @@ public class Question extends BaseModel {
     public List<Answer> getSolutionAnswers() {
         return solutionAnswers;
     }
-
-    // public List<Image> getAttachments() {
-    //     return attachments;
-    // }
 }

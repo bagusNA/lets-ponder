@@ -6,12 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import org.project.bagusna.letsponder.core.Router;
-import org.project.bagusna.letsponder.views.AnswerView;
-import org.project.bagusna.letsponder.views.HomeView;
-import org.project.bagusna.letsponder.views.LoginView;
-import org.project.bagusna.letsponder.views.RegisterView;
-import org.project.bagusna.letsponder.views.SearchView;
-import org.project.bagusna.letsponder.views.View;
+import org.project.bagusna.letsponder.views.*;
 
 public class LetsPonderApplication extends Application {
     @Override
@@ -21,13 +16,13 @@ public class LetsPonderApplication extends Application {
         Image icon = new Image(getClass().getResourceAsStream("img/Lp.png"));
         stage.getIcons().add(icon);
 
-
         View[] views = {
                 new HomeView(),
                 new LoginView(),
                 new RegisterView(),
                 new SearchView(),
-                new AnswerView()
+                new AnswerView(),
+                new QuestionView(),
         };
 
         Router router = Router.setup(stage, views);

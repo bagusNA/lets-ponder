@@ -12,11 +12,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
+import org.project.bagusna.letsponder.stores.QuestionStore;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class SearchController extends Controller {
     private final QuestionRepository questionRepository;
+    private final QuestionStore questionStore;
     private ArrayList<Question> questions;
 
     @FXML
@@ -37,6 +38,7 @@ public class SearchController extends Controller {
         super();
 
         this.questionRepository = questionRepository;
+        this.questionStore = QuestionStore.getInstance();
     }
 
     @FXML
@@ -82,7 +84,8 @@ public class SearchController extends Controller {
 
     @FXML
     private void onListItemClicked(MouseEvent event, Question question) {
-        System.out.println(question.getTitle());
+        this.questionStore.set(question);
+        this.router.openView("question");
     }
 
     private void buildList() {
