@@ -62,10 +62,14 @@ public class HomeController extends Controller {
         this.userBtn.setOnAction((ActionEvent event) -> userContextMenu.show(this.userBtn, Side.TOP, 0, 0));
         this.logoutContextItem.setOnAction((ActionEvent event) -> this.router.openView("login"));
 
-        User loggedInUser = this.authStore.get();
-        this.userBtn.setText(loggedInUser.getName());
+        this.authStore.subscribe(user -> {
+            if (user == null) {
+                return;
+            }
 
-        Platform.runLater(() -> this.buildAvatarImage(loggedInUser.getProfileImageUrl()));
+            this.userBtn.setText(user.getName());
+            Platform.runLater(() -> this.buildAvatarImage(user.getProfileImageUrl()));
+        });
 
         thread.execute(() -> {
             try {
