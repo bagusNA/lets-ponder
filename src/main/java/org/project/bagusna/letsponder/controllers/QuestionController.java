@@ -14,6 +14,7 @@ import org.project.bagusna.letsponder.repositories.AnswerRepository;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.repositories.UserRepository;
 import org.project.bagusna.letsponder.stores.QuestionStore;
+import org.project.bagusna.letsponder.utils.AnimationUtil;
 import org.project.bagusna.letsponder.utils.DateUtil;
 import org.project.bagusna.letsponder.utils.ImageUtil;
 import org.project.bagusna.letsponder.views.components.AnswerBlock;
@@ -118,6 +119,9 @@ public class QuestionController extends Controller {
 
                             AnswerBlock block = new AnswerBlock(answer, user);
                             this.questionsContainer.getChildren().add(block);
+                            AnimationUtil.fadeOnAndTranslate(block, i, 0.3, 0.2, -10, 0, 0, 0);
+
+                            i++;
                         }
                     });
                 }
