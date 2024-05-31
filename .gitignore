@@ -39,3 +39,5 @@ build/
 
 ### Env ###
 .env
+
+pb_data/
