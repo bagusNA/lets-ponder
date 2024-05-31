@@ -119,7 +119,7 @@ public class QuestionController extends Controller {
 
                             AnswerBlock block = new AnswerBlock(answer, user);
                             this.questionsContainer.getChildren().add(block);
-                            AnimationUtil.fadeOnAndTranslate(block, i, 0.3, 0.2, -10, 0, 0, 0);
+                            AnimationUtil.fadeOnAndTranslate(block, i, 0.3, 0.5, -10, 0, 0, 0);
 
                             i++;
                         }

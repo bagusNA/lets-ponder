@@ -17,6 +17,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.stores.QuestionStore;
+import org.project.bagusna.letsponder.utils.AnimationUtil;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -93,12 +94,16 @@ public class SearchController extends Controller {
             return;
         }
 
+        int i = 0;
         for (Question question: this.questions) {
-            this.buildListItem(question);
+            HBox item = this.buildListItem(question);
+            AnimationUtil.fadeOnAndTranslate(item, i, 0.3, 0.5, -10, 0, 0, 0);
+
+            i++;
         }
     }
 
-    private void buildListItem(Question question) {
+    private HBox buildListItem(Question question) {
         HBox rootContainer = new HBox();
         VBox descriptionContainer = new VBox();
         VBox statsContainer = new VBox();
@@ -143,6 +148,8 @@ public class SearchController extends Controller {
         rootContainer.setOnMouseClicked(e -> this.onListItemClicked(e, question));
 
         this.listContainer.getChildren().add(rootContainer);
+
+        return rootContainer;
     }
 
     private void clearList() {
