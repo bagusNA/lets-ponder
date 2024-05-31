@@ -2,6 +2,7 @@ package org.project.bagusna.letsponder.stores;
 
 import javafx.beans.property.SimpleObjectProperty;
 import org.project.bagusna.letsponder.dto.auth.AuthRecord;
+import org.project.bagusna.letsponder.models.User;
 
 import java.util.function.Consumer;
 
@@ -54,5 +55,9 @@ public class AuthStore implements Store<AuthRecord> {
 
     public String getToken() {
         return this.authRecord.get().getToken();
+    }
+
+    public User getRecord() {
+        return this.authRecord.get().getRecord();
     }
 }

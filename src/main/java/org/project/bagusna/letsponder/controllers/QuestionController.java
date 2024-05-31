@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import org.project.bagusna.letsponder.models.Answer;
 import org.project.bagusna.letsponder.models.User;
 import org.project.bagusna.letsponder.repositories.AnswerRepository;
-import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.repositories.UserRepository;
 import org.project.bagusna.letsponder.stores.QuestionStore;
 import org.project.bagusna.letsponder.utils.AnimationUtil;
@@ -29,7 +28,6 @@ public class QuestionController extends Controller {
     private final UserRepository userRepository;
     private final QuestionStore questionStore;
 
-    private String questionId;
     private ArrayList<Answer> answers;
     private HashMap<String, User> answerAuthors;
 
@@ -85,15 +83,15 @@ public class QuestionController extends Controller {
 
     private void onAnswerAction(ActionEvent ev) {
         this.router.openView("answer");
+        this.answers.clear();
     }
 
     private void loadAnswers() {
         this.questionStore.subscribe(question -> {
-            if (question == null || question.getId().equals(this.questionId)) {
+            if (question == null) {
                 return;
             }
             else {
-                this.questionId = question.getId();
                 this.answers.clear();
                 this.answersContainer.getChildren().clear();
             }

@@ -22,9 +22,10 @@ module org.project.bagusna.letsponder {
     exports org.project.bagusna.letsponder.dto.formrequests;
     exports org.project.bagusna.letsponder.dto.responses;
     exports org.project.bagusna.letsponder.services.auth;
+    exports org.project.bagusna.letsponder.services.pocketbase;
+    exports org.project.bagusna.letsponder.services.question;
     exports org.project.bagusna.letsponder.views;
     exports org.project.bagusna.letsponder.views.components;
-    exports org.project.bagusna.letsponder.services.pocketbase;
     exports org.project.bagusna.letsponder.repositories;
     opens org.project.bagusna.letsponder.controllers to javafx.fxml;
     opens org.project.bagusna.letsponder.models to com.google.gson;
