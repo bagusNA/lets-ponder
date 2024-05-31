@@ -29,8 +29,8 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="20.0">
                            <children>
-                              <ImageView fx:id="askerAvatar" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefWidth="100.0">
+                              <ImageView fx:id="askerAvatar" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox alignment="CENTER_LEFT" prefWidth="100.0">
                                  <children>
                                     <Label fx:id="userNameLabel">
                                        <font>
@@ -72,7 +72,15 @@
                         <Insets bottom="12.0" left="16.0" right="16.0" top="12.0" />
                      </padding>
                   </VBox>
-                  <VBox fx:id="questionsContainer" prefWidth="100.0" />
+                  <Label text="Community Answers">
+                     <VBox.margin>
+                        <Insets bottom="12.0" top="32.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="questionsContainer" prefWidth="100.0" spacing="20.0" />
                </children>
             </VBox>
          </content>
