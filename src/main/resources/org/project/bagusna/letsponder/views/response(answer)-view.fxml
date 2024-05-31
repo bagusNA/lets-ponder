@@ -10,7 +10,7 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.views.AnswerdetailView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.bagusna.letsponder.controllers.AnswerController">
    <children>
       <Pane fx:id="panepertanyaan_diAnswer" layoutY="42.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #E8E2E2;">
          <children>
