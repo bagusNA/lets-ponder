@@ -50,6 +50,8 @@ public class QuestionController extends Controller {
     private Button reportBtn;
     @FXML
     private Button backBtn;
+    @FXML
+    private Button answerBtn;
 
     public QuestionController(QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository) {
         super();
@@ -70,6 +72,7 @@ public class QuestionController extends Controller {
         Platform.runLater(() -> {
             this.reportBtn.setOnAction(this::onReportAction);
             this.backBtn.setOnAction(this::onBackAction);
+            this.answerBtn.setOnAction(this::onAnswerAction);
         });
     }
 
@@ -80,6 +83,10 @@ public class QuestionController extends Controller {
     private void onBackAction(ActionEvent ev) {
         this.router.openView("search");
         this.questionStore.clear();
+    }
+
+    private void onAnswerAction(ActionEvent ev) {
+        this.router.openView("answer");
     }
 
     private void loadQuestions() {
