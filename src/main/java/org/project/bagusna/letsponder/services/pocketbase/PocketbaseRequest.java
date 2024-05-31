@@ -89,9 +89,7 @@ public class PocketbaseRequest {
                 .header("Content-Type", "application/json");
 
         if (this.authStore.isAuthenticated()) {
-            reqBuilder = reqBuilder.setHeader("Authorization", "Authorization: " + this.authStore.getToken());
-
-            System.out.println(this.authStore.getToken());
+            reqBuilder = reqBuilder.setHeader("Authorization", this.authStore.getToken());
         }
 
         HttpRequest req = reqBuilder
