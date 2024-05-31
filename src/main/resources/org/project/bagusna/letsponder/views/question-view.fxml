@@ -78,6 +78,15 @@
                                  <cursor>
                                     <Cursor fx:constant="OPEN_HAND" />
                                  </cursor></Button>
+                              <Button fx:id="likeBtn" layoutX="510.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <FontIcon iconLiteral="far-heart">
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
+                                    </FontIcon>
+                                 </graphic>
+                              </Button>
                               <Separator maxWidth="1.7976931348623157E308" opacity="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                               <Button fx:id="reportBtn" mnemonicParsing="false" style="-fx-background-color: transparent;">
                                  <graphic>

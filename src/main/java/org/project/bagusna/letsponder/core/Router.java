@@ -74,4 +74,8 @@ public class Router {
     public void setCurrentViewName(String currentViewName) {
         this.currentViewName = currentViewName;
     }
+
+    public Stage getStage() {
+        return this.stage;
+    }
 }

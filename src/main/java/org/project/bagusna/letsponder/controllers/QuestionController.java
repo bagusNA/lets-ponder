@@ -8,15 +8,20 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import org.project.bagusna.letsponder.models.Answer;
-import org.project.bagusna.letsponder.models.User;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.project.bagusna.letsponder.dto.formrequests.QuestionLikeFormRequest;
+import org.project.bagusna.letsponder.models.*;
 import org.project.bagusna.letsponder.repositories.AnswerRepository;
+import org.project.bagusna.letsponder.repositories.QuestionLikeRepository;
 import org.project.bagusna.letsponder.repositories.UserRepository;
+import org.project.bagusna.letsponder.services.question.QuestionService;
+import org.project.bagusna.letsponder.stores.AuthStore;
 import org.project.bagusna.letsponder.stores.QuestionStore;
 import org.project.bagusna.letsponder.utils.AnimationUtil;
 import org.project.bagusna.letsponder.utils.DateUtil;
 import org.project.bagusna.letsponder.utils.ImageUtil;
 import org.project.bagusna.letsponder.views.components.AnswerBlock;
+import org.project.bagusna.letsponder.views.components.Toast;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -26,7 +31,10 @@ import java.util.HashMap;
 public class QuestionController extends Controller {
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
+    private final QuestionService questionService;
+    private final QuestionLikeRepository questionLikeRepository;
     private final QuestionStore questionStore;
+    private final AuthStore authStore;
 
     private ArrayList<Answer> answers;
     private HashMap<String, User> answerAuthors;
@@ -48,14 +56,21 @@ public class QuestionController extends Controller {
     @FXML
     private Button backBtn;
     @FXML
+    private Button likeBtn;
+    @FXML
     private Button answerBtn;
 
-    public QuestionController(AnswerRepository answerRepository, UserRepository userRepository) {
+    public QuestionController(AnswerRepository answerRepository, UserRepository userRepository, QuestionService questionService, QuestionLikeRepository questionLikeRepository) {
         super();
 
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
+        this.questionService = questionService;
+        this.questionLikeRepository = questionLikeRepository;
+
         this.questionStore = QuestionStore.getInstance();
+        this.authStore = AuthStore.getInstance();
+
         this.answers = new ArrayList<>();
         this.answerAuthors = new HashMap<>();
     }
@@ -65,10 +80,13 @@ public class QuestionController extends Controller {
         this.loadQuestion();
         this.loadAnswers();
 
+        this.questionStore.subscribe(this::loadLike);
+
         Platform.runLater(() -> {
             this.reportBtn.setOnAction(this::onReportAction);
             this.backBtn.setOnAction(this::onBackAction);
             this.answerBtn.setOnAction(this::onAnswerAction);
+            this.likeBtn.setOnAction(this::onLikeAction);
         });
     }
 
@@ -84,6 +102,29 @@ public class QuestionController extends Controller {
     private void onAnswerAction(ActionEvent ev) {
         this.router.openView("answer");
         this.answers.clear();
+    }
+
+    private void onLikeAction(ActionEvent ev) {
+        QuestionLikeFormRequest form = new QuestionLikeFormRequest(this.questionStore.get().getValue(), this.authStore.getRecord());
+
+        this.thread.execute(() -> {
+            QuestionLike like = this.questionService.like(form);
+            this.loadLike(this.questionStore.get().get());
+
+            String toastMsg = (like != null)
+                    ? "Successfully added to liked questions!"
+                    : "Failed to like this question!";
+
+            Platform.runLater(() -> {
+                Toast.makeText(toastMsg, 3500, 300, 300);
+
+                if (like != null) {
+                    FontIcon icon = (FontIcon) this.likeBtn.getGraphic();
+                    icon.setIconLiteral("fas-heart");
+                }
+            });
+
+        });
     }
 
     private void loadAnswers() {
@@ -157,6 +198,31 @@ public class QuestionController extends Controller {
                     throw new RuntimeException(e);
                 }
             });
+        });
+    }
+
+    private void loadLike(Question question) {
+        this.thread.execute(() -> {
+            try {
+                Pagination<QuestionLike> likes = this.questionLikeRepository.getByQuestionId(question.getId());
+                Integer likeCount = likes.getTotalItems();
+                this.likeBtn.setText(likeCount.toString());
+
+                Platform.runLater(() -> {
+                    FontIcon icon = (FontIcon) this.likeBtn.getGraphic();
+                    icon.setIconLiteral("far-heart");
+
+                    for (QuestionLike like: likes.getItems()) {
+                        if (like.getUser().equals(this.authStore.getRecord().getId())) {
+                            icon.setIconLiteral("fas-heart");
+                            break;
+                        }
+                    }
+                });
+            }
+            catch (URISyntaxException | IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 
