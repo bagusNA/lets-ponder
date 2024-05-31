@@ -1,6 +1,9 @@
 package org.project.bagusna.letsponder.dto.formrequests;
 
+import org.project.bagusna.letsponder.models.enums.UserRole;
+
 public class AuthRegisterFormRequest extends FormRequest {
+    public String name;
     public String username;
     public String email;
     public String passwordConfirm;
@@ -9,15 +12,24 @@ public class AuthRegisterFormRequest extends FormRequest {
     public String role;
     public String about;
 
-    public AuthRegisterFormRequest(String username, String email, String password, String passwordConfirm) {
+    public AuthRegisterFormRequest(String name, String username, String email, String password, String passwordConfirm) {
+        this.name = name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.passwordConfirm = passwordConfirm;
 
         this.emailVisibility = true;
-        this.role = "LEARNER";
+        this.role = UserRole.LEARNER.getValue();
         this.about = "";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {

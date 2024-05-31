@@ -40,12 +40,12 @@ public class AuthService {
         }
     }
 
-    public User register(String username, String email, String password, String confirmPassword) {
+    public User register(String name, String username, String email, String password, String confirmPassword) {
         PocketbaseRequest req = this.pocketbaseService.getBuilder()
                 .collection(User.collectionName)
                 .build();
 
-        AuthRegisterFormRequest body = new AuthRegisterFormRequest(username, email, password, confirmPassword);
+        AuthRegisterFormRequest body = new AuthRegisterFormRequest(name, username, email, password, confirmPassword);
 
         try {
             HttpResponse<String> res = req.post(body);

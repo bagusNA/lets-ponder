@@ -27,6 +27,16 @@
                         <Insets />
                      </VBox.margin>
                   </Label>
+                  <VBox layoutX="34.0" layoutY="102.0" spacing="8.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                        <TextField fx:id="nameField" promptText="Name" styleClass="search-box" stylesheets="@../../../../../../values/style.css">
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
                   <VBox spacing="8.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />

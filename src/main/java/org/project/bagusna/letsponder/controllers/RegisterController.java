@@ -21,6 +21,9 @@ public class RegisterController extends Controller {
     private final AuthService authService;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
     private TextField usernameField;
 
     @FXML
@@ -59,6 +62,7 @@ public class RegisterController extends Controller {
     }
 
     private void handleRegister(ActionEvent event) {
+        String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
         String email = emailField.getText();
@@ -72,7 +76,7 @@ public class RegisterController extends Controller {
                 opacityTransition.play();
             });
 
-            User user = this.authService.register(username, email, password, confirmPassword);
+            User user = this.authService.register(name, username, email, password, confirmPassword);
 
             if (user != null) {
                 Platform.runLater(() -> this.router.openView("login"));

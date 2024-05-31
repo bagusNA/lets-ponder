@@ -8,7 +8,6 @@ module org.project.bagusna.letsponder {
     requires org.apache.httpcomponents.httpclient;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
-    // add icon pack modules
     requires org.kordamp.ikonli.fontawesome5;
     requires javafx.graphics;
 
@@ -29,4 +28,6 @@ module org.project.bagusna.letsponder {
     exports org.project.bagusna.letsponder.repositories;
     opens org.project.bagusna.letsponder.controllers to javafx.fxml;
     opens org.project.bagusna.letsponder.models to com.google.gson;
+    exports org.project.bagusna.letsponder.models.enums;
+    opens org.project.bagusna.letsponder.models.enums to com.google.gson;
 }
