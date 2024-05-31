@@ -11,22 +11,26 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.project.bagusna.letsponder.models.Question;
 import org.project.bagusna.letsponder.models.Topic;
 import org.project.bagusna.letsponder.repositories.QuestionRepository;
 import org.project.bagusna.letsponder.repositories.TopicRepository;
 import org.project.bagusna.letsponder.stores.AuthStore;
+import org.project.bagusna.letsponder.utils.AnimationUtil;
 import org.project.bagusna.letsponder.utils.ImageUtil;
 import org.project.bagusna.letsponder.views.components.QuestionListBlock;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeController extends Controller {
     private final QuestionRepository questionRepository;
     private final TopicRepository topicRepository;
     private final AuthStore authStore;
     private ArrayList<Topic> topics;
+    private HashMap<String, ArrayList<Question>> questions;
 
     @FXML
     private VBox mainContentContainer;
@@ -51,6 +55,8 @@ public class HomeController extends Controller {
         this.questionRepository = questionRepository;
         this.topicRepository = topicRepository;
         this.authStore = AuthStore.getInstance();
+
+        this.questions = new HashMap<>();
     }
 
     @FXML
@@ -70,17 +76,26 @@ public class HomeController extends Controller {
             Platform.runLater(() -> this.buildAvatarImage(authRecord.getRecord().getProfileImageUrl()));
         });
 
-        thread.execute(() -> {
+        this.thread.execute(() -> {
             try {
                 topics = topicRepository.getAll().getItems();
-            } catch (URISyntaxException | IOException | InterruptedException e) {
+
+                for (Topic topic: topics) {
+                    this.questions.put(topic.getId(), questionRepository.getByTopic(topic).getItems());
+                }
+            }
+            catch (URISyntaxException | IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
             Platform.runLater(() -> {
+                int i = 0;
                 for (Topic topic: topics) {
-                    QuestionListBlock block = buildTopicQuestionListBlock(topic);
+                    QuestionListBlock block = new QuestionListBlock(topic.getTitle(), this.questions.get(topic.getId()));
                     mainContentContainer.getChildren().add(block);
+                    AnimationUtil.fadeOnAndTranslate(block, i, 0.3, 0.5, -10, 0, 0, 0);
+
+                    i++;
                 }
             });
         });
@@ -89,14 +104,6 @@ public class HomeController extends Controller {
     @FXML
     public void onSearchInputClicked(MouseEvent event) {
         router.openView("search");
-    }
-
-    public QuestionListBlock buildTopicQuestionListBlock(Topic topic) {
-        try {
-            return new QuestionListBlock(topic.getTitle(), questionRepository.getByTopic(topic).getItems());
-        } catch (URISyntaxException | IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void buildAvatarImage(String src) {
