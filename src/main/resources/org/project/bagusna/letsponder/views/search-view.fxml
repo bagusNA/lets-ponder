@@ -51,7 +51,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button mnemonicParsing="false" style="-fx-border-radius: 80; -fx-background-radius: 80;" text="Ask">
+            <Button fx:id="askBtn" mnemonicParsing="false" style="-fx-border-radius: 80; -fx-background-radius: 80;" text="Ask">
                <graphic>
                   <FontIcon iconLiteral="fas-question" />
                </graphic>

@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -34,6 +35,8 @@ public class SearchController extends Controller {
     private TextField searchInput;
     @FXML
     private ProgressBar loadingBar;
+    @FXML
+    private Button askBtn;
 
     public SearchController(QuestionRepository questionRepository) {
         super();
@@ -44,6 +47,8 @@ public class SearchController extends Controller {
 
     @FXML
     public void initialize() {
+        this.askBtn.setOnAction((ev) -> this.router.openView("ask"));
+
         this.buildList();
     }
 

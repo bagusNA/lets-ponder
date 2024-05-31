@@ -41,4 +41,7 @@ public class Topic extends BaseModel {
         return questions;
     }
 
+    public String toString() {
+        return this.title;
+    }
 }
