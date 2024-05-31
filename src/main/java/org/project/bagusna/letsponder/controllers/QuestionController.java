@@ -25,17 +25,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class QuestionController extends Controller {
-    private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
     private final QuestionStore questionStore;
 
     private String questionId;
     private ArrayList<Answer> answers;
-    private HashMap<String, User> answerers;
+    private HashMap<String, User> answerAuthors;
 
     @FXML
-    private VBox questionsContainer;
+    private VBox answersContainer;
     @FXML
     private ImageView askerAvatar;
     @FXML
@@ -53,21 +52,20 @@ public class QuestionController extends Controller {
     @FXML
     private Button answerBtn;
 
-    public QuestionController(QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository) {
+    public QuestionController(AnswerRepository answerRepository, UserRepository userRepository) {
         super();
 
-        this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
         this.questionStore = QuestionStore.getInstance();
         this.answers = new ArrayList<>();
-        this.answerers = new HashMap<>();
+        this.answerAuthors = new HashMap<>();
     }
 
     @FXML
     private void initialize() {
-        this.loadUserInfo();
-        this.loadQuestions();
+        this.loadQuestion();
+        this.loadAnswers();
 
         Platform.runLater(() -> {
             this.reportBtn.setOnAction(this::onReportAction);
@@ -89,7 +87,7 @@ public class QuestionController extends Controller {
         this.router.openView("answer");
     }
 
-    private void loadQuestions() {
+    private void loadAnswers() {
         this.questionStore.subscribe(question -> {
             if (question == null || question.getId().equals(this.questionId)) {
                 return;
@@ -97,7 +95,7 @@ public class QuestionController extends Controller {
             else {
                 this.questionId = question.getId();
                 this.answers.clear();
-                this.questionsContainer.getChildren().clear();
+                this.answersContainer.getChildren().clear();
             }
 
             this.thread.execute(() -> {
@@ -108,12 +106,12 @@ public class QuestionController extends Controller {
                             .map(Answer::getUser)
                             .toArray(String[]::new);
 
-                    ArrayList<User> answerers = this.userRepository.getByIds(answererIds).getItems();
+                    ArrayList<User> allAuthors = this.userRepository.getByIds(answererIds).getItems();
 
                     for (Answer answer: this.answers) {
-                        for (User answerer: answerers) {
+                        for (User answerer: allAuthors) {
                             if (answer.getUser().equals(answerer.getId())) {
-                                this.answerers.put(answer.getUser(), answerer);
+                                this.answerAuthors.put(answer.getUser(), answerer);
                                 break;
                             }
                         }
@@ -122,10 +120,10 @@ public class QuestionController extends Controller {
                     Platform.runLater(() -> {
                         int i = 0;
                         for (Answer answer: this.answers) {
-                            User user = this.answerers.get(answer.getUser());
+                            User user = this.answerAuthors.get(answer.getUser());
 
                             AnswerBlock block = new AnswerBlock(answer, user);
-                            this.questionsContainer.getChildren().add(block);
+                            this.answersContainer.getChildren().add(block);
                             AnimationUtil.fadeOnAndTranslate(block, i, 0.3, 0.5, -10, 0, 0, 0);
 
                             i++;
@@ -139,7 +137,7 @@ public class QuestionController extends Controller {
         });
     }
 
-    private void loadUserInfo() {
+    private void loadQuestion() {
         this.questionStore.subscribe(question -> {
             if (question == null) {
                 return;
