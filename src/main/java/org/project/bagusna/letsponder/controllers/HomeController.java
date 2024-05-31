@@ -61,13 +61,13 @@ public class HomeController extends Controller {
         this.userBtn.setOnAction((ActionEvent event) -> userContextMenu.show(this.userBtn, Side.TOP, 0, 0));
         this.logoutContextItem.setOnAction((ActionEvent event) -> this.router.openView("login"));
 
-        this.authStore.subscribe(user -> {
-            if (user == null) {
+        this.authStore.subscribe(authRecord -> {
+            if (authRecord == null) {
                 return;
             }
 
-            this.userBtn.setText(user.getName());
-            Platform.runLater(() -> this.buildAvatarImage(user.getProfileImageUrl()));
+            this.userBtn.setText(authRecord.getRecord().getName());
+            Platform.runLater(() -> this.buildAvatarImage(authRecord.getRecord().getProfileImageUrl()));
         });
 
         thread.execute(() -> {

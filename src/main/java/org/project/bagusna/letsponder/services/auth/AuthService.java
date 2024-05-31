@@ -1,9 +1,9 @@
 package org.project.bagusna.letsponder.services.auth;
 
 import com.google.gson.Gson;
+import org.project.bagusna.letsponder.dto.auth.AuthRecord;
 import org.project.bagusna.letsponder.dto.formrequests.AuthLoginFormRequest;
 import org.project.bagusna.letsponder.dto.formrequests.AuthRegisterFormRequest;
-import org.project.bagusna.letsponder.dto.responses.AuthSuccessResponse;
 import org.project.bagusna.letsponder.models.User;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseRequest;
 import org.project.bagusna.letsponder.services.pocketbase.PocketbaseService;
@@ -22,7 +22,7 @@ public class AuthService {
         this.gson = new Gson();
     }
 
-    public AuthSuccessResponse authenticate(String identity, String password) {
+    public AuthRecord authenticate(String identity, String password) {
         PocketbaseRequest req = this.pocketbaseService.getBuilder()
                 .collection(User.collectionName)
                 .slug("auth-with-password")
@@ -33,7 +33,7 @@ public class AuthService {
         try {
             HttpResponse<String> res = req.post(body);
 
-            return this.gson.fromJson(res.body(), AuthSuccessResponse.class);
+            return this.gson.fromJson(res.body(), AuthRecord.class);
         }
         catch (URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);

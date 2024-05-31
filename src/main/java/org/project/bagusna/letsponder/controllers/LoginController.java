@@ -12,7 +12,7 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.project.bagusna.letsponder.LetsPonderApplication;
 import org.project.bagusna.letsponder.core.Router;
-import org.project.bagusna.letsponder.dto.responses.AuthSuccessResponse;
+import org.project.bagusna.letsponder.dto.auth.AuthRecord;
 import org.project.bagusna.letsponder.services.auth.AuthService;
 import org.project.bagusna.letsponder.stores.AuthStore;
 
@@ -68,10 +68,10 @@ public class LoginController extends Controller {
                 opacityTransition.play();
             });
 
-            AuthSuccessResponse authData = this.authService.authenticate(username, password);
+            AuthRecord authData = this.authService.authenticate(username, password);
 
             if (authData != null) {
-                this.authStore.set(authData.record);
+                this.authStore.set(authData);
 
                 Platform.runLater(() -> Router.getInstance().openView("home"));
             } else {

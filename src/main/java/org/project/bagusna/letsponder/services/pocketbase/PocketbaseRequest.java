@@ -2,6 +2,7 @@ package org.project.bagusna.letsponder.services.pocketbase;
 
 import org.apache.http.client.utils.URIBuilder;
 import org.project.bagusna.letsponder.dto.formrequests.FormRequest;
+import org.project.bagusna.letsponder.stores.AuthStore;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PocketbaseRequest {
+    private final AuthStore authStore;
+
     private final String baseUrl;
     private final String collectionName;
     private String id;
@@ -27,11 +30,15 @@ public class PocketbaseRequest {
     private boolean skipTotal;
 
     public PocketbaseRequest(String baseUrl, String collectionName) {
+        this.authStore = AuthStore.getInstance();
+
         this.baseUrl = baseUrl;
         this.collectionName = collectionName;
     }
 
     public PocketbaseRequest(Builder builder) {
+        this.authStore = AuthStore.getInstance();
+
         this.baseUrl = builder.baseUrl;
         this.collectionName = builder.collectionName;
         this.id = builder.id;
@@ -57,8 +64,13 @@ public class PocketbaseRequest {
     public HttpResponse<String> get() throws URISyntaxException, IOException, InterruptedException {
         URI uri = new URI(this.getUrl());
 
-        HttpRequest req = HttpRequest.newBuilder()
-                .uri(uri)
+        HttpRequest.Builder reqBuilder = HttpRequest.newBuilder().uri(uri);
+
+        if (this.authStore.isAuthenticated()) {
+            reqBuilder = reqBuilder.header("Authorization", "Authorization: " + this.authStore.getToken());
+        }
+
+        HttpRequest req = reqBuilder
                 .GET()
                 .build();
 
@@ -71,9 +83,18 @@ public class PocketbaseRequest {
         URI uri = new URI(this.getUrl());
 
         HttpRequest.BodyPublisher body = HttpRequest.BodyPublishers.ofString(form.toJson());
-        HttpRequest req = HttpRequest.newBuilder()
+
+        HttpRequest.Builder reqBuilder = HttpRequest.newBuilder()
                 .uri(uri)
-                .header("Content-Type", "application/json")
+                .header("Content-Type", "application/json");
+
+        if (this.authStore.isAuthenticated()) {
+            reqBuilder = reqBuilder.setHeader("Authorization", "Authorization: " + this.authStore.getToken());
+
+            System.out.println(this.authStore.getToken());
+        }
+
+        HttpRequest req = reqBuilder
                 .POST(body)
                 .build();
 
@@ -108,7 +129,7 @@ public class PocketbaseRequest {
         }
 
         if (this.filter != null) {
-            builder.addParameter("filter", this.filter);
+            builder.addParameter("filter", "(" + this.filter + ")");
         }
 
         if (this.sort != null) {

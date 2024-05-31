@@ -18,6 +18,7 @@ module org.project.bagusna.letsponder {
     exports org.project.bagusna.letsponder.models;
     exports org.project.bagusna.letsponder.controllers;
     exports org.project.bagusna.letsponder.core;
+    exports org.project.bagusna.letsponder.dto.auth;
     exports org.project.bagusna.letsponder.dto.formrequests;
     exports org.project.bagusna.letsponder.dto.responses;
     exports org.project.bagusna.letsponder.services.auth;
