@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -70,6 +71,7 @@ public class AnswerBlock extends VBox {
         Label title = new Label(answer.getSummary());
         title.setFont(Font.font("System", FontWeight.BOLD, 20));
         title.setWrapText(true);
+        title.setMinHeight(Region.USE_PREF_SIZE);
         VBox.setMargin(title, new Insets(0, 0, 8, 0));
 
         return title;
@@ -78,6 +80,7 @@ public class AnswerBlock extends VBox {
     public Label descLabel() {
         Label desc = new Label(answer.getDetail());
         desc.setWrapText(true);
+        desc.setMinHeight(Region.USE_PREF_SIZE);
 
         return desc;
     }
