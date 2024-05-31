@@ -139,8 +139,4 @@ public class DiscoverController extends Controller {
 
         this.listContainer.getChildren().add(rootContainer);
     }
-
-    private void clearList() {
-        this.listContainer.getChildren().clear();
-    }
 }
