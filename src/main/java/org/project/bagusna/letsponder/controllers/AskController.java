@@ -51,7 +51,7 @@ public class AskController extends Controller {
 
     @FXML
     private void initialize() {
-        this.backBtn.setOnAction(e -> this.router.openView("question"));
+        this.backBtn.setOnAction(e -> this.router.openView("search"));
         this.submitBtn.setOnAction(e -> this.onSubmit());
 
         this.loadTopics();
